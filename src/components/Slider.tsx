@@ -41,7 +41,7 @@ const Slider = () => {
               </Link>
             </div>
             {/* IMAGE CONTAINER */}
-            <div className="h-1/2 xl:w-1/2 xl:h-full relative">
+            <div className="h-1/2 w-full xl:w-1/2 xl:h-full relative">
               <Image
                 src={slide.img}
                 alt=""
@@ -53,7 +53,7 @@ const Slider = () => {
           </div>
         ))}
       </div>
-      <div className="absolute left-1/2 bottom-4 md:bottom-8 flex gap-4">
+      <div className="absolute left-1/2 bottom-6 md:bottom-8 flex gap-4">
         {slides.map((slide, index) => (
           <div
             className={`w-3 h-3  rounded-full ring-1 ring-gray-600 cursor-pointer flex items-center justify-center ${
