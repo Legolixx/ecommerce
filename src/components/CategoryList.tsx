@@ -15,7 +15,7 @@ const categoryList = () => {
               className="object-cover rounded-md"
             />
           </div>
-          <h1 className="mt-8 font-light text-clip tracking-wide">
+          <h1 className="mt-8 font-light text-clip tracking-wide text-center">
             Category Name
           </h1>
         </Link>
