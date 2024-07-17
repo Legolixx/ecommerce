@@ -23,7 +23,7 @@ const Slider = () => {
       >
         {slides.map((slide) => (
           <div
-            className={`${slide.bg} w-screen h-full flex flex-col gap-16 xl:flex-row`}
+            className={`bg-gradient-to-r from-blue-50 to-yellow-50 w-screen h-full flex flex-col gap-16 xl:flex-row`}
             key={slide.id}
           >
             {/* TEXT CONTAINER */}
