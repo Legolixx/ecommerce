@@ -25,7 +25,6 @@ const ListPage = () => {
       <Filter />
       {/* PRODUTOS */}
       <h1 className="mt-12 text-xl font-semibold text-slate-800">Para você!</h1>
-     // <ProductList />
     </div>
   );
 };
