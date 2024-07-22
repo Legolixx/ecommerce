@@ -1,5 +1,4 @@
 import Add from "@/components/Add";
-import CustomizeProducts from "@/components/CustomizeProducts";
 import ProductImages from "@/components/ProductImages";
 import { wixClientServer } from "@/lib/wixClientServer";
 import { notFound } from "next/navigation";
@@ -18,6 +17,7 @@ const SinglePage = async ({ params }: { params: { slug: string } }) => {
 
   const product = products.items[0];
 
+
   return (
     <div className="px-4 md:px-8 lg:px-16 xl:px-32 2xl:px-64 relative flex flex-col lg:flex-row gap-16 pt-5">
       {/* IMAGE */}
@@ -30,7 +30,7 @@ const SinglePage = async ({ params }: { params: { slug: string } }) => {
         <p className="text-gray-500">{product.description}</p>
         <div className="h-[2px] bg-gray-200" />
         {product.price?.price === product.price?.discountedPrice ? (
-          <h2 className="font-medium text-2xl">{product.price?.price}</h2>
+          <h2 className="font-medium text-2xl">R$ {product.price?.price}</h2>
         ) : (
           <div className="flex items-center gap-4">
             <h3 className="text-xl text-gray-500 line-through">
@@ -42,8 +42,7 @@ const SinglePage = async ({ params }: { params: { slug: string } }) => {
           </div>
         )}
         <div className="h-[2px] bg-gray-200" />
-        <CustomizeProducts />
-        <Add />
+        <Add stock={product.stock?.quantity || 0} productId={product._id!} />
         <div className="h-[2px] bg-gray-200" />
         {product.additionalInfoSections?.map((section: any) => (
           <div className="text-sm" key={section.title}>
