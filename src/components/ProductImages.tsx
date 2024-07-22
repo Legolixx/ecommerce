@@ -3,11 +3,10 @@
 import Image from "next/image";
 import { useState } from "react";
 
-
 const ProductImages = ({ items }: { items: any }) => {
   const [index, setIndex] = useState(0);
 
-  const itemsWithOutArray = items[0]
+  const itemsWithOutArray = items[0];
 
   return (
     <div className="">
@@ -21,10 +20,10 @@ const ProductImages = ({ items }: { items: any }) => {
         />
       </div>
       <div className="flex justify-between gap-4 mt-8">
-        {itemsWithOutArray.map((item:any, i:number) => (
+        {itemsWithOutArray.map((item: any, i: number) => (
           <div
             className="w-1/4 h-32 relative gap-4 mt-8 cursor-pointer"
-            key={item.id}
+            key={`${item.id}-${i}`}
             onClick={() => setIndex(i)}
           >
             <Image

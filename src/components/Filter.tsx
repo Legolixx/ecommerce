@@ -1,80 +1,72 @@
-const FilterComponent = () => {
+"use client";
+
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
+
+const Filter = () => {
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const { replace } = useRouter();
+
+  const handleFilterChange = (
+    e: React.ChangeEvent<HTMLSelectElement | HTMLInputElement>
+  ) => {
+    const { name, value } = e.target;
+    const params = new URLSearchParams(searchParams);
+    params.set(name, value);
+    replace(`${pathname}?${params.toString()}`);
+  };
+
   return (
     <div className="mt-12 flex justify-between">
       <div className="flex gap-6 flex-wrap">
         <select
-          name="type"
-          id=""
+          name="cat"
           className="py-2 px-4 rounded-2xl text-xs font-medium bg-[#EBEDED]"
+          onChange={handleFilterChange}
         >
-          <option>Type</option>
-          <option value="fisico">Fisico</option>
-          <option value="digital">Digital</option>
+          <option>Categoria</option>
+          <option value="">New Arrival</option>
+          <option value="">Popular</option>
         </select>
         <input
           type="text"
           name="min"
           placeholder="preço min"
           className="text-xs rounded-2xl pl-2 w-24 ring-1 ring-gray-400"
+          onChange={handleFilterChange}
         />
         <input
           type="text"
           name="max"
           placeholder="preço max"
           className="text-xs rounded-2xl pl-2 w-24 ring-1 ring-gray-400"
+          onChange={handleFilterChange}
         />
+        {/* TODO: Filter Categories */}
         <select
-          name="type"
+          name=""
           id=""
           className="py-2 px-4 rounded-2xl text-xs font-medium bg-[#EBEDED]"
         >
-          <option>Type</option>
-          <option value="fisico">Fisico</option>
-          <option value="digital">Digital</option>
-        </select>
-        <select
-          name="type"
-          id=""
-          className="py-2 px-4 rounded-2xl text-xs font-medium bg-[#EBEDED]"
-        >
-          <option>Type</option>
-          <option value="fisico">Fisico</option>
-          <option value="digital">Digital</option>
-        </select>
-        <select
-          name="type"
-          id=""
-          className="py-2 px-4 rounded-2xl text-xs font-medium bg-[#EBEDED]"
-        >
-          <option>Type</option>
-          <option value="fisico">Fisico</option>
-          <option value="digital">Digital</option>
-        </select>
-        <select
-          name="type"
-          id=""
-          className="py-2 px-4 rounded-2xl text-xs font-medium bg-[#EBEDED]"
-        >
-          <option>Type</option>
-          <option value="fisico">Fisico</option>
-          <option value="digital">Digital</option>
+          <option>Todos os filtros</option>
         </select>
       </div>
       <div className="">
         <select
-          name=""
+          name="sort"
           id=""
           className="py-2 px-4 rounded-2xl text-xs font-medium bg-white ring-1 ring-gray-400"
+          onChange={handleFilterChange}
         >
-          <option>Sort By</option>
-          <option value="">Price (menor preço)</option>
-          <option value="">Price (maior preço)</option>
-          <option value="">Novidade</option>
-          <option value="">Antigos</option>
+          <option>Filtrar por</option>
+          <option value="asc price">Preço (menor para maior)</option>
+          <option value="desc price">Preço (maior para menor)</option>
+          <option value="asc lastUpdated">Novidade</option>
+          <option value="desc lastUpdated">Antigos</option>
         </select>
       </div>
     </div>
   );
 };
 
-export default FilterComponent;
+export default Filter;
